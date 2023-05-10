@@ -23,9 +23,5 @@ resource "spacelift_aws_integration_attachment" "example_stack_attachment" {
   stack_id       = "example-stack"
   read           = true
   write          = true
-
-  depends_on = [
-    aws_iam_role.spacelift_role
-  ]
 }
 
