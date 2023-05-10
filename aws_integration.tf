@@ -9,9 +9,6 @@ resource "spacelift_aws_integration" "aws" {
   # We need to set the ARN manually rather than referencing the role to avoid a circular dependency
   role_arn                       = local.role_arn
   generate_credentials_in_worker = true
-  depends_on = [
-    aws_iam_role.spacelift_role
-  ]
 }
 
 data "spacelift_aws_integration_attachment_external_id" "example_stack" {
