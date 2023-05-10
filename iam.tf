@@ -1,8 +1,7 @@
 resource "aws_iam_role" "spacelift_role" {
   name = "spacelift_role"
 
-  # Terraform's "jsonencode" function converts a
-  # Terraform expression result to valid JSON syntax.
+
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
@@ -18,6 +17,9 @@ resource "aws_iam_role" "spacelift_role" {
           AWS = "247747705325"
         }
       },
+    ]
+    Statement = [
+      jsondecode(data.spacelift_aws_integration_attachment_external_id.my_stack.assume_role_policy_statement)
     ]
   })
 
