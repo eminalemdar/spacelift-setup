@@ -26,10 +26,5 @@ resource "spacelift_aws_integration_attachment" "example_stack_attachment" {
   stack_id       = "example-stack"
   read           = true
   write          = true
-
-  # The role needs to exist before we attach since we test role assumption during attachment.
-  depends_on = [
-    aws_iam_role.spacelift_role
-  ]
 }
 
