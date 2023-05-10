@@ -1,7 +1,7 @@
 data "aws_caller_identity" "current" {}
 
 locals {
-  role_name = aws_iam_role.spacelift_role.name
+  role_name = "spacelift_role"
   role_arn  = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/${local.role_name}"
 }
 
@@ -27,7 +27,7 @@ resource "spacelift_aws_integration_attachment" "example_stack_attachment" {
   write          = true
 
   depends_on = [
-    aws_iam_role.this
+    aws_iam_role.spacelift_role
   ]
 }
 
