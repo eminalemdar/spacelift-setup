@@ -19,7 +19,7 @@ resource "aws_iam_role" "spacelift_role" {
       },
     ]
     Statement = [
-      jsondecode(data.spacelift_aws_integration_attachment_external_id.my_stack.assume_role_policy_statement)
+      jsondecode(data.spacelift_aws_integration_attachment_external_id.example_stack.assume_role_policy_statement)
     ]
   })
 
