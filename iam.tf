@@ -5,20 +5,6 @@ resource "aws_iam_role" "spacelift_role" {
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
-      {
-        Action = "sts:AssumeRole"
-        Effect = "Allow"
-        Condition = {
-              StringLike = {
-                "sts:ExternalId" = "emin@*"
-              }
-        }
-        Principal = {
-          AWS = "247747705325"
-        }
-      },
-    ]
-    Statement = [
       jsondecode(data.spacelift_aws_integration_attachment_external_id.example_stack.assume_role_policy_statement)
     ]
   })
